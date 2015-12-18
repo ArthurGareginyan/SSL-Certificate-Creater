@@ -33,13 +33,20 @@ openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/$__servername.crt 
 ```
 
 Description of the arguments:
-req – Request to create a new certificate.
--new – Creating a certificate request (Certificate Signing Request – CSR).
--x509 – Instead of creating a CSR, create a self-signed certificate.
--days 365 – Validity period is 365 days (1 year).
--nodes – Do not encrypt the private key.
--out – Where to store the certificate.
--keyout – Where to store the private key.
+
+`req` – Request to create a new certificate.
+
+`-new` – Creating a certificate request (Certificate Signing Request – CSR).
+
+`-x509` – Instead of creating a CSR, create a self-signed certificate.
+
+`-days 365` – Validity period is 365 days (1 year).
+
+`-nodes` – Do not encrypt the private key.
+
+`-out` – Where to store the certificate.
+
+`-keyout` – Where to store the private key.
 
 After running the script it will automatically create a new certificate and private RSA key length of 2048 bits. They will be placed in a working directory (Apache – /etc/apache2/ssl/, NginX – /etc/nginx/ssl/) and they will be set rights “600” for the security.
 
