@@ -6,7 +6,7 @@
 # Version:      1.1                                           #
 # Data:         30.10.2014                                    #
 # Author:       Arthur (Berserkr) Gareginyan                  #
-# Author URI:   http://www.arthurgareginyan.com        #
+# Author URI:   http://www.arthurgareginyan.com               #
 # Email:        arthurgareginyan@gmail.com                    #
 # License:      GNU General Public License, version 3 (GPLv3) #
 # License URI:  http://www.gnu.org/licenses/gpl-3.0.html      #
