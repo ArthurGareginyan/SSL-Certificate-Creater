@@ -2,6 +2,8 @@
 
 To quickly and easily create a self-signed SSL certificate for Web servers Apache and Nginx I wrote a little script in “BASH”.
 
+![screenshot](https://github.com/ArthurGareginyan/SSL-Certificate-Creater/blob/master/screenshot.png)
+
 SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
 
 ## Use
@@ -60,14 +62,21 @@ or at:
 /etc/nginx/ssl/*.crt и /etc/nginx/ssl/*.key
 ```
 
+## License
+
+This script is licensed under the [GNU General Public License, version 3 (GPLv3)](http://www.gnu.org/licenses/gpl-3.0.html) and is distributed free of charge.
+
+Commercial licensing (e.g. for projects that can’t use an open-source license) is available upon request.
+
+
 ## Author
 
-Arthur Garegnyan aka Berserkr
+Arthur Garegnyan
 
 * Email: arthurgareginyan@gmail.com
 
 * GitHub: [https://github.com/ArthurGareginyan/](https://github.com/ArthurGareginyan/)
 
-* My Website: [http://www.arthurgareginyan.com](http://www.arthurgareginyan.com)
+* Website: [http://www.arthurgareginyan.com](http://www.arthurgareginyan.com)
 
-* Donation Page: [http://www.arthurgareginyan.com/donate.html](http://www.arthurgareginyan.com/donate.html)
+* Donation: [http://www.arthurgareginyan.com/donate.html](http://www.arthurgareginyan.com/donate.html)
