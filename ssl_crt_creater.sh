@@ -3,9 +3,10 @@
 # Name:         SSL Certificate Creater                       #
 # Description:  Create a self-signed SSL Certificates         #
 #               for Apache and Nginx web-servers.             #
-# Version:      1.1                                           #
-# Data:         30.10.2014                                    #
-# Author:       Arthur (Berserkr) Gareginyan                  #
+# Version:      1.2                                           #
+# Released:     25.05.2015                                    #
+# Updated:      1.05.2020                                     #
+# Author:       Arthur Gareginyan                             #
 # Author URI:   http://www.arthurgareginyan.com               #
 # Email:        arthurgareginyan@gmail.com                    #
 # License:      MIT License                                   #
