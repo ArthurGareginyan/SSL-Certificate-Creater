@@ -6,19 +6,21 @@ To quickly and easily create a self-signed SSL certificate for Web servers Apach
 
 SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
 
+
 ## Use
 
-Before you run the script, you must set the performance rights:
+1. Before you run the script, you must set the performance rights:
 ```
 chmod +x ssl_crt_creater.sh
 ```
 
-Run the script:
+2. Run the script:
 ```
 ./ssl_crt_creater.sh
 ```
 
 After you create the SSL certificate then you should bind it to the server.
+
 
 ## Description
 
