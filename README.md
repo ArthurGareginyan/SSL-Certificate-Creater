@@ -9,7 +9,7 @@ SSL certificates are required to ensure the secure transfer of information in th
 
 ## Use
 
-1. Before you run the script, you must set the performance rights:
+1. Before you run the script, you must set the script executable permission:
 ```
 chmod +x ssl_crt_creater.sh
 ```
