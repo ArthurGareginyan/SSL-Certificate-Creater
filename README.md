@@ -1,6 +1,6 @@
 # SSL Certificate automatically by a BASH script
 
-To quickly and easily create a self-signed SSL certificate for Web servers Apache and Nginx I wrote a little script in “BASH”.
+To quickly and easily create a self-signed SSL certificate for Apache and Nginx web servers I wrote a little script in BASH.
 
 ![screenshot](screenshot.png)
 
@@ -52,7 +52,7 @@ Description of the arguments:
 
 `-keyout` – Where to store the private key.
 
-After running the script it will automatically create a new certificate and private RSA key length of 2048 bits. They will be placed in a working directory (Apache – /etc/apache2/ssl/, NginX – /etc/nginx/ssl/) and they will be set rights “600” for the security.
+After running the script it will automatically create a new certificate and private RSA key length of 2048 bits. They will be placed in a working directory (Apache – ``/etc/apache2/ssl/``, NginX – ``/etc/nginx/ssl/``) and they will be set rights `600` for the security.
 
 Now, your private key and certificate are available at:
 ```
