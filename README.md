@@ -2,7 +2,7 @@
 
 To quickly and easily create a self-signed SSL certificate for Web servers Apache and Nginx I wrote a little script in “BASH”.
 
-![screenshot](https://github.com/ArthurGareginyan/SSL-Certificate-Creater/blob/master/screenshot.png)
+![screenshot](screenshot.png)
 
 SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
 
