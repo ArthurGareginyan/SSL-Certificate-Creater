@@ -62,9 +62,10 @@ or at:
 /etc/nginx/ssl/*.crt и /etc/nginx/ssl/*.key
 ```
 
+
 ## License
 
-This script is licensed under the [GNU General Public License, version 3 (GPLv3)](http://www.gnu.org/licenses/gpl-3.0.html) and is distributed free of charge.
+This script is open-sourced software licensed under the [MIT](LICENSE.md) and is distributed free of charge.
 
 Commercial licensing (e.g. for projects that can’t use an open-source license) is available upon request.
 
