@@ -7,14 +7,14 @@ To quickly and easily create a self-signed SSL certificate for Apache and Nginx 
 SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
 
 
-## Use
+## Usage
 
-1. Before you run the script, you must set the script executable permission:
+1. Before you run the script, you must set the script executable permission. This is done only once, before the very first run of the script.
 ```
 chmod +x ssl_crt_creater.sh
 ```
 
-2. Run the script:
+2. Run the `ssl_crt_creater.sh` script.
 ```
 ./ssl_crt_creater.sh
 ```
