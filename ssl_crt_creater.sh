@@ -13,9 +13,9 @@
 # License URI:  http://opensource.org/licenses/MIT            #
 #=============================================================#
 
-#                   USAGE:
-#      chmod +x ./ssl_crt_creater.sh
-#      sudo ./ssl_crt_creater.sh
+#                  USAGE:
+#        chmod +x ./ssl_crt_creater.sh
+#        sudo ./ssl_crt_creater.sh
 
 
 ################## DECLARE FUNCTIONS ######################
