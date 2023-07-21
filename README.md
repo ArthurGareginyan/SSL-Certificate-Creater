@@ -6,7 +6,7 @@ To quickly and easily create a self-signed SSL certificate for Apache and Nginx 
 
 This repository contains a BASH script that automates the creation of self-signed SSL certificates for Apache and Nginx web servers. The goal is to simplify and streamline the process of SSL certificate generation, allowing for secure network information transfers with minimal effort.
 
-SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
+SSL certificates are required to ensure the secure transfer of information in the network. Self-signed SSL certificates, in the realm of cryptography and computer security, are identity certificates that are signed by the same entity they certify. Essentially, if you create the SSL certificate for your own domain or IP address, it will be self-signed. These certificates are most suited for internal use such as on an intranet.
 
 
 ## Usage
@@ -45,19 +45,13 @@ openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/$__servername.crt 
 
 Here is a brief description of the command arguments:
 
-`req` – Request to create a new certificate.
-
-`-new` – Creating a certificate request (Certificate Signing Request – CSR).
-
-`-x509` – Instead of creating a CSR, create a self-signed certificate.
-
-`-days 365` – Validity period is 365 days (1 year).
-
-`-nodes` – Do not encrypt the private key.
-
-`-out` – Where to store the certificate.
-
-`-keyout` – Where to store the private key.
+- `req` - Request to create a new certificate.
+- `-new` - Creates a Certificate Signing Request (CSR).
+- `-x509` - Creates a self-signed certificate instead of a CSR.
+- `-days 365` - Sets the certificate validity period to 365 days (1 year).
+- `-nodes` - Prevents the private key from being encrypted.
+- `-out` - Specifies the location to store the certificate.
+- `-keyout` - Specifies the location to store the private key.
 
 Upon execution, the script will generate a new certificate and a private RSA key with a length of 2048 bits. These will be placed in the respective working directories for Apache (`/etc/apache2/ssl/`) and Nginx (`/etc/nginx/ssl/`) with file permissions set to `600` for security reasons.
 
