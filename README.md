@@ -1,42 +1,49 @@
-# SSL Certificate automatically by a BASH script
+# SSL Certificate Automation Script (BASH)
 
 To quickly and easily create a self-signed SSL certificate for Apache and Nginx web servers I wrote a little script in BASH.
 
-![screenshot](screenshot.png)
+![Screenshot of the Script in Action](screenshot.png)
+
+This repository contains a BASH script that automates the creation of self-signed SSL certificates for Apache and Nginx web servers. The goal is to simplify and streamline the process of SSL certificate generation, allowing for secure network information transfers with minimal effort.
 
 SSL certificates are required to ensure the secure transfer of information in the network. In cryptography and computer security, a self-signed certificate is an identity certificate that is signed by the same entity whose identity it certifies. That is, if you yourself, for your domain or IP address, created the SSL certificate it will be self-signed. Self-signed SSL certificates are ideal for internal use (intranet).
 
 
 ## Usage
 
-1. Before you run the script, you must set the script executable permission. This is done only once, before the very first run of the script.
-```
+1. Before running the script, ensure it has the required executable permissions. This only needs to be done once, prior to the first execution of the script:
+
+```bash
 chmod +x ssl_crt_creater.sh
 ```
 
-2. Run the `ssl_crt_creater.sh` script.
-```
+2. Run the `ssl_crt_creater.sh` script:
+```bash
 ./ssl_crt_creater.sh
 ```
 
-After you create the SSL certificate then you should bind it to the server.
+After the SSL certificate is created, you can then bind it to your server.
 
 
-## Description
+## Dependencies and Instructions
 
-To run the script required packages “dialog” and “openssl”. Package “dialog” is used to render the menu and package “openssl” is used to create certificate. If they are not installed then the script will prompt you to install them.
+This script requires the `dialog` and `openssl` packages. The `dialog` package is used for menu rendering, while `openssl` is used for certificate creation. If these packages are not already installed, the script will prompt you to do so.
 
-In the script, to create the certificate and key is used, this command for NginX:
-```
+The commands used for certificate and key creation are as follows:
+
+For NginX:
+
+```bash
 openssl req -new -x509 -days 365 -nodes -out /etc/nginx/ssl/$__servername.crt -keyout /etc/nginx/ssl/$__servername.key
 ```
 
-and this for Apache:
-```
+For Apache:
+
+```bash
 openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/$__servername.crt -keyout /etc/apache2/ssl/$__servername.key
 ```
 
-Description of the arguments:
+Here is a brief description of the command arguments:
 
 `req` – Request to create a new certificate.
 
@@ -52,17 +59,12 @@ Description of the arguments:
 
 `-keyout` – Where to store the private key.
 
-After running the script it will automatically create a new certificate and private RSA key length of 2048 bits. They will be placed in a working directory (Apache – ``/etc/apache2/ssl/``, NginX – ``/etc/nginx/ssl/``) and they will be set rights `600` for the security.
+Upon execution, the script will generate a new certificate and a private RSA key with a length of 2048 bits. These will be placed in the respective working directories for Apache (`/etc/apache2/ssl/`) and Nginx (`/etc/nginx/ssl/`) with file permissions set to `600` for security reasons.
 
-Now, your private key and certificate are available at:
-```
-/etc/apache2/ssl/*.crt и /etc/apache2/ssl/*.key
-```
+The generated private key and certificate can be found at:
 
-or at:
-```
-/etc/nginx/ssl/*.crt и /etc/nginx/ssl/*.key
-```
+- For Apache: `/etc/apache2/ssl/*.crt` and `/etc/apache2/ssl/*.key`
+- For NginX: `/etc/nginx/ssl/*.crt` and `/etc/nginx/ssl/*.key`
 
 
 ## Contributing
@@ -76,24 +78,20 @@ Please take a moment to read the guidelines in the [CONTRIBUTING.md](CONTRIBUTIN
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within this script, please send an email to me. All security vulnerabilities will be promptly addressed.
-
+If you discover a security vulnerability within this script, kindly email me directly. All security vulnerabilities will be promptly addressed.
 
 ## License
 
-This script is open-sourced software licensed under the [MIT](LICENSE.md) and is distributed free of charge.
+This script is an open-source software licensed under the [MIT License](LICENSE.md) and is distributed free of charge.
 
-Commercial licensing (e.g. for projects that can’t use an open-source license) is available upon request.
+Commercial licensing (for projects that cannot use an open-source license) is available upon request.
 
 
 ## Author
 
 Arthur Garegnyan
 
-* Email: arthurgareginyan@gmail.com
-
-* GitHub: [https://github.com/ArthurGareginyan/](https://github.com/ArthurGareginyan/)
-
-* Website: [http://www.arthurgareginyan.com](http://www.arthurgareginyan.com)
-
-* Donation: [http://www.arthurgareginyan.com/donate.html](http://www.arthurgareginyan.com/donate.html)
+- Email: arthurgareginyan@gmail.com
+- GitHub: [https://github.com/ArthurGareginyan/](https://github.com/ArthurGareginyan/)
+- Website: [http://www.arthurgareginyan.com](http://www.arthurgareginyan.com)
+- Donate: [http://www.arthurgareginyan.com/donate.html](http://www.arthurgareginyan.com/donate.html)
