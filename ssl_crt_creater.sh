@@ -72,10 +72,29 @@ setServerName() {
     fi
 }
 
+setValidityPeriod() {
+    cmd=(dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
+        --inputbox "\n Please enter the validity period of the certificate (in days)." 22 76 $validity_period)
+    choices=$("${cmd[@]}" 2>&1 >/dev/tty)
+    if [ "$choices" != "" ];
+        then
+            validity_period=$choices
+        else
+            break
+    fi
+}
+
 checkServerName() {
     if [ "$__servername" = "" ];
         then
             setServerName
+    fi
+}
+
+checkValidityPeriod() {
+    if [ "$validity_period" = "" ];
+        then
+            setValidityPeriod
     fi
 }
 
@@ -87,7 +106,7 @@ generateCertificate() {
            --title "Create SSL Certificate for $server_type" \
            --msgbox "\n We are now going to create a self-signed certificate. While you could simply press ENTER when you are asked for country name etc. or enter whatever you want, it might be beneficial to have the web servers host name in the common name field of the certificate." 20 60
     mkdir -p $cert_dir
-    openssl req -new -x509 -days 365 -nodes -out $cert_dir/$__servername.crt -keyout $cert_dir/$__servername.key
+    openssl req -new -x509 -days $validity_period -nodes -out $cert_dir/$__servername.crt -keyout $cert_dir/$__servername.key
     chmod 600 $cert_dir/$__servername.key
     dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
            --title "Create SSL Certificate for $server_type" \
@@ -104,21 +123,25 @@ while true;
 do
     cmd=(dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
                 --title "Create SSL Certificate for NGinX/Apache" \
-                --menu "You MUST set the server URL (e.g., myaddress.dyndns.org) before starting create certificate. Choose task:" 20 60 15)
+                --menu "You MUST set the server URL (e.g., myaddress.dyndns.org) and certificate validity period (in days) before starting create certificate. Choose task:" 20 60 15)
     options=(1 "Set server URL ($__servername)"
-             2 "Generate new SSL certificate for NGiNX"
-             3 "Generate new SSL certificate for Apache"
-             4 "Exit")
+             2 "Set certificate validity period ($validity_period)"
+             3 "Generate new SSL certificate for NGiNX"
+             4 "Generate new SSL certificate for Apache"
+             5 "Exit")
     choice=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
     if [ "$choice" != "" ];
         then
             case $choice in
                 1) setServerName ;;
-                2) checkServerName
-                   generateCertificate "NGinX" "/etc/nginx/ssl" ;;
+                2) setValidityPeriod ;;
                 3) checkServerName
+                   checkValidityPeriod
+                   generateCertificate "NGinX" "/etc/nginx/ssl" ;;
+                4) checkServerName
+                   checkValidityPeriod
                    generateCertificate "Apache" "/etc/apache2/ssl" ;;
-                4) clear
+                5) clear
                    exit 0 ;;
             esac
         else
