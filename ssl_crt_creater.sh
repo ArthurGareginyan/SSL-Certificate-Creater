@@ -5,7 +5,7 @@
 # Name:         SSL Certificate Creater                       #
 # Description:  Create a self-signed SSL Certificates         #
 #               for Apache and Nginx web-servers.             #
-# Version:      1.3                                           #
+# Version:      1.4                                           #
 # Released:     25.05.2015                                    #
 # Updated:      21.07.2023                                    #
 # Author:       Arthur Gareginyan                             #
@@ -40,7 +40,18 @@ checkNeededPackages() {
             read ops
             case $ops in
                 YES|yes|Y|y)
-                    apt-get install $items ;;
+                    if [ -n "$(command -v apt-get)" ]; then
+                        apt-get install $items
+                    elif [ -n "$(command -v dnf)" ]; then
+                        dnf install $items
+                    elif [ -n "$(command -v yum)" ]; then
+                        yum install $items
+                    elif [ -n "$(command -v zypper)" ]; then
+                        zypper install $items
+                    else
+                        echo "No known package manager found"
+                        exit 1
+                    fi ;;
                 *)
                     echo -e "\n Exiting..."
                     exit 1 ;;
