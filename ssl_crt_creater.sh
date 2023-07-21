@@ -1,11 +1,13 @@
+
 #!/bin/bash
+
 #=============================================================#
 # Name:         SSL Certificate Creater                       #
 # Description:  Create a self-signed SSL Certificates         #
 #               for Apache and Nginx web-servers.             #
-# Version:      1.2                                           #
+# Version:      1.3                                           #
 # Released:     25.05.2015                                    #
-# Updated:      1.05.2020                                     #
+# Updated:      21.07.2023                                    #
 # Author:       Arthur Gareginyan                             #
 # Author URI:   http://www.arthurgareginyan.com               #
 # Email:        arthurgareginyan@gmail.com                    #
@@ -38,7 +40,7 @@ checkNeededPackages() {
             read ops
             case $ops in
                 YES|yes|Y|y)
-                    sudo apt-get install $items ;;
+                    apt-get install $items ;;
                 *)
                     echo -e "\n Exiting..."
                     exit 1 ;;
@@ -66,29 +68,19 @@ checkServerName() {
     fi
 }
 
-installCertificateNginx() {
-    dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
-           --title "Create SSL Certificate for NGinX" \
-           --msgbox "\n We are now going to create a self-signed certificate. While you could simply press ENTER when you are asked for country name etc. or enter whatever you want, it might be beneficial to have the web servers host name in the common name field of the certificate." 20 60
-    mkdir -p /etc/nginx/ssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/nginx/ssl/$__servername.crt -keyout /etc/nginx/ssl/$__servername.key
-    chmod 600 /etc/nginx/ssl/$__servername.key
-    dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
-           --title "Create SSL Certificate for NGinX" \
-           --msgbox "\n Done! Your certificates are available at /etc/nginx/ssl/$__servername.crt & /etc/nginx/ssl/$__servername.key" 20 60
-}
+generateCertificate() {
+    server_type=$1
+    cert_dir=$2
 
-installCertificateApache() {
     dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
-           --title "Create SSL Certificate for Apache" \
+           --title "Create SSL Certificate for $server_type" \
            --msgbox "\n We are now going to create a self-signed certificate. While you could simply press ENTER when you are asked for country name etc. or enter whatever you want, it might be beneficial to have the web servers host name in the common name field of the certificate." 20 60
-    clear
-    mkdir -p /etc/apache2/ssl
-    openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/$__servername.crt -keyout /etc/apache2/ssl/$__servername.key
-    chmod 600 /etc/apache2/ssl/$__servername.key
+    mkdir -p $cert_dir
+    openssl req -new -x509 -days 365 -nodes -out $cert_dir/$__servername.crt -keyout $cert_dir/$__servername.key
+    chmod 600 $cert_dir/$__servername.key
     dialog --backtitle "mycyberuniverse.com - Create SSL Certificate for NGinX/Apache" \
-           --title "Create SSL Certificate for Apache" \
-           --msgbox "\n Done! Your certificates are available at /etc/apache2/ssl/$__servername.crt & /etc/apache2/ssl/$__servername.key" 20 60
+           --title "Create SSL Certificate for $server_type" \
+           --msgbox "\n Done! Your certificates are available at $cert_dir/$__servername.crt & $cert_dir/$__servername.key" 20 60
 }
 
 
@@ -112,9 +104,9 @@ do
             case $choice in
                 1) setServerName ;;
                 2) checkServerName
-                   installCertificateNginx ;;
+                   generateCertificate "NGinX" "/etc/nginx/ssl" ;;
                 3) checkServerName
-                   installCertificateApache ;;
+                   generateCertificate "Apache" "/etc/apache2/ssl" ;;
                 4) clear
                    exit 0 ;;
             esac
