@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.0] - 2023-07-22
 
-##### Added
 - **Support for multiple package managers**: Updated the `checkNeededPackages` function to use the available package manager (`apt-get`, `dnf`, `yum`, or `zypper`) on the system. If no known package manager is found, the script will display a message and exit.
 - **User-specified certificate validity**: Added functions `setValidityPeriod` and `checkValidityPeriod` to allow the user to specify the validity period of the certificate (in days). This value is used when generating the certificate.
 - **Code comments for improved readability**: Introduced extensive inline comments to the script code. These comments aim to enhance readability and maintainability of the code by explaining the functionality of each segment of the script. This enhancement aids both developers and users in understanding and potentially adjusting the script according to their needs.
@@ -21,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Removed hard-coded server types**: The server type (NginX or Apache) is now passed as an argument to the certificate generation function. This improves the modularity of the script.
 
 ## [1.2.0] - 2020-05-01
+
+## [1.1.0] - 2015-11-04
 
 ## [1.0.0] - 2015-05-25
 - Initial version of the SSL Certificate Creator script.
